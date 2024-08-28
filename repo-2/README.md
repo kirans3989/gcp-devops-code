@@ -8,4 +8,8 @@ This repository contains a CI/CD pipeline for building, testing, and deploying a
 4. **Push Docker Image to Google Container Registry (GCR)**
 5. **Deploy to Cloud Run**
 6. **Grant permission to access the specified URL** 
+    gcloud run services add-iam-policy-binding <<application Name>> \
+  --region us-central1 \
+  --member="allUsers" \
+  --role="roles/run.invoker"
 
