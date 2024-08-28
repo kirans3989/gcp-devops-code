@@ -1,6 +1,6 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/$PROJECT_ID/gcp-applications', '.']
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/gcp-applications', 'docker']
 
 # Set logging to Cloud Logging only
 options:
