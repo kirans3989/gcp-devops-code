@@ -6,6 +6,8 @@ steps:
   # Build the Docker image using the Dockerfile from the cloned repository
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'gcr.io/$PROJECT_ID/gcp-applications', 'gcp-devops-code/repo-1']
-
+  # Push the Docker image to Google Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/gcp-applications']
 options:
   logging: CLOUD_LOGGING_ONLY
