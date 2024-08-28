@@ -1,0 +1,7 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/gcp-applications', '.']
+
+# Set logging to Cloud Logging only
+options:
+  logging: CLOUD_LOGGING_ONLY
