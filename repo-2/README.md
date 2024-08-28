@@ -22,8 +22,14 @@ This repository contains a CI/CD pipeline for building, testing, and deploying a
 6. **Grant Permission to Access the Specified URL**
    - Run the following command in cloudshell to grant `roles/run.invoker` permission to `allUsers` for accessing the Cloud Run service:
      ```
-     gcloud run services add-iam-policy-binding <<application Name>> \
+     gcloud run services add-iam-policy-binding <<cloudrn application Name>> \
        --region us-central1 \
        --member="allUsers" \
        --role="roles/run.invoker"
      ```
+7. **To access the application run the below command**
+     ```
+     gcloud run services describe <<cloudrun application Name>> --region <<specify the region>>
+
+     ```
+     
