@@ -1,7 +1,11 @@
 steps:
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/$PROJECT_ID/gcp-applications', 'docker']
+  # Clone the repository
+  - name: 'gcr.io/cloud-builders/git'
+    args: ['clone', 'https://github.com/kirans3989/gcp-devops-code.git']
 
-# Set logging to Cloud Logging only
+  # Build the Docker image using the Dockerfile from the cloned repository
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/gcp-applications', 'gcp-devops-code/docker']
+
 options:
   logging: CLOUD_LOGGING_ONLY
