@@ -1,0 +1,32 @@
+steps:
+  # Clone the repository
+  - name: 'gcr.io/cloud-builders/git'
+    args: ['clone', 'https://github.com/kirans3989/gcp-devops-code.git']
+
+  # Run Maven to clean and package the Java application
+  - name: 'gcr.io/cloud-builders/mvn'
+    dir: 'gcp-devops-code/repo-1'
+    args: ['clean', 'package']
+
+  # Build the Docker image using the Dockerfile from the cloned repository
+  - name: 'gcr.io/cloud-builders/docker'
+    dir: 'gcp-devops-code/repo-1'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/gcp-applications', '.']
+
+  # Push the Docker image to Google Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/gcp-applications']
+
+  # Deploy the Docker image to Cloud Run and expose it to the internet
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: [
+      'run', 'deploy', 'gcp-applications', 
+      '--image', 'gcr.io/$PROJECT_ID/gcp-applications', 
+      '--platform', 'managed', 
+      '--region', 'us-central1', 
+      '--allow-unauthenticated',
+      '--port', '8080'
+    ]
+
+options:
+  logging: CLOUD_LOGGING_ONLY
