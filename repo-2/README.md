@@ -2,7 +2,7 @@
 
 This repository contains a CI/CD pipeline for building, testing, and deploying a Java Spring Boot application to Google Cloud Run using Google Cloud Build. The pipeline consists of the following steps:
 
-## Pipeline Steps
+## Pipeline Steps Specified in cloudbuild.yaml file
 
 1. **Clone the Repository**
    - The pipeline starts by cloning the repository from GitHub.
