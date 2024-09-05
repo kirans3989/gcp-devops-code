@@ -23,3 +23,16 @@ spec:
           image: gcr.io/gcp-dev-426803/springboot-docker-app:v1.0
           ports:
             - containerPort: 8080
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: springboot-load-service
+spec:
+  ports:
+    - port: 80 
+      targetPort: 8080
+  selector:
+    type: backend
+    app: springbootdocker  
+  type: LoadBalancer    
