@@ -17,16 +17,16 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/$PROJECT_ID/gcp-springboot-applications']
 
-  # Deploy the Docker image to Cloud Run and expose it to the internet
-  - name: 'gcr.io/cloud-builders/gcloud'
-    args: [
-      'run', 'deploy', 'gcp-applications', 
-      '--image', 'gcr.io/$PROJECT_ID/gcp-springboot-applications', 
-      '--platform', 'managed', 
-      '--region', 'us-central1', 
-      '--allow-unauthenticated',
-      '--port', '8080'
-    ]
+  # Deploy the Docker image to GKE and expose it to the internet
+  - name: 'google/cloud-sdk:latest'
+    entrypoint: 'sh'
+    args:
+    - -xe
+    - -c
+    - |
+      gcloud deploy apply --file deploy/pipeline.yaml --region=us-central1
+      gcloud deploy apply --file deploy/dev.yaml --region=us-central1
+      gcloud deploy releases create 'app-release-${SHORT_SHA}' --delivery-pipeline=gke-cicd-pipeline --region=us-central1 --skaffold-file=skaffold.yaml
 
 options:
   logging: CLOUD_LOGGING_ONLY
