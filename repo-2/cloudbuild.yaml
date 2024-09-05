@@ -18,15 +18,15 @@ steps:
     args: ['push', 'gcr.io/$PROJECT_ID/gcp-springboot-applications']
 
   # Deploy the Docker image to Cloud Run and expose it to the internet
-  - name: 'gcr.io/cloud-builders/gcloud'
-    args: [
-      'run', 'deploy', 'gcp-applications', 
-      '--image', 'gcr.io/$PROJECT_ID/gcp-springboot-applications', 
-      '--platform', 'managed', 
-      '--region', 'us-central1', 
-      '--allow-unauthenticated',
-      '--port', '8080'
-    ]
+#  - name: 'gcr.io/cloud-builders/gcloud'
+#   args: [
+#    'run', 'deploy', 'gcp-applications', 
+#      '--image', 'gcr.io/$PROJECT_ID/gcp-springboot-applications', 
+#      '--platform', 'managed', 
+#      '--region', 'us-central1', 
+#      '--allow-unauthenticated',
+#      '--port', '8080'
+#    ] 
 
 options:
   logging: CLOUD_LOGGING_ONLY
