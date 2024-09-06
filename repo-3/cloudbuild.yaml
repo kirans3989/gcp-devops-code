@@ -5,12 +5,12 @@ steps:
 
   # Run Maven to clean and package the Java application
   - name: 'gcr.io/cloud-builders/mvn'
-    dir: 'gcp-devops-code/repo-2'
+    dir: 'gcp-devops-code/repo-3'
     args: ['clean', 'package']
 
   # Build the Docker image using the Dockerfile from the cloned repository
   - name: 'gcr.io/cloud-builders/docker'
-    dir: 'gcp-devops-code/repo-2'
+    dir: 'gcp-devops-code/repo-3'
     args: ['build', '-t', 'gcr.io/$PROJECT_ID/gcp-springboot-applications', '.']
 
   # Push the Docker image to Google Container Registry
@@ -24,9 +24,9 @@ steps:
     - -xe
     - -c
     - |
-      gcloud deploy apply --file gcp-devops-code/repo-2/deploy/pipeline.yaml --region=us-central1
-      gcloud deploy apply --file gcp-devops-code/repo-2/deploy/dev.yaml --region=us-central1
-      gcloud deploy releases create "app-release-$(git rev-parse --short HEAD)" --delivery-pipeline=gke-cicd-pipeline --region=us-central1 --skaffold-file=gcp-devops-code/repo-2/skaffold.yaml
+      gcloud deploy apply --file gcp-devops-code/repo-3/deploy/pipeline.yaml --region=us-central1
+      gcloud deploy apply --file gcp-devops-code/repo-3/deploy/dev.yaml --region=us-central1
+      gcloud deploy releases create "app-release-$(git rev-parse --short HEAD)" --delivery-pipeline=gke-cicd-pipeline --region=us-central1 --skaffold-file=gcp-devops-code/repo-3/skaffold.yaml
 
 options:
   logging: CLOUD_LOGGING_ONLY
