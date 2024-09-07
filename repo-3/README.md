@@ -1,4 +1,4 @@
-# CI/CD Pipeline for Deploying Applications on Google Kubernetes Engine (GKE)
+# CI/CD Pipeline for Deploying Spring Boot Applications on Google Kubernetes Engine (GKE) using Cloud Build and Cloud Deploy
 
 
 ## Introduction
@@ -9,7 +9,7 @@ In the modern software development landscape, Continuous Integration/Continuous 
 ## Requirements
 
 To achieve our goal, we have the following requirements:
-- Deployment of two simple Flask applications (app1 & app2) on the GKE clusters.
+- Deployment of spring boot application on the GKE clusters.
 - Automation of the entire deployment process, triggered by a developer’s code push.
 - Dev-cluster deployment precedes production deployment, allowing for review before promoting to the prod-cluster.
 
@@ -29,7 +29,7 @@ This CI/CD pipeline leverages several key components:
 
 We are going to implement the solution using the following steps to implement the CI/CD pipeline for deploying applications on GKE:
 
-1. Create two simple Flask applications (app1 & app2).
+1. Create spring boot application and create a docker image.
 2. Set up a GitHub repository and push the application code.
 3. Create two GKE clusters: dev-cluster and prod-cluster, using Google Kubernetes Engine.
 4. Create Kubernetes manifest files in the Kubernetes folder to deploy the application and expose it as a service.
@@ -37,6 +37,7 @@ We are going to implement the solution using the following steps to implement th
 6. Now Create cloudbuild.yaml file to build and push docker images to Artifact registry for both application and Configure a Cloud Build trigger to initiate the pipeline upon code push events in the GitHub repository.
 7. Implement the necessary code to define the Cloud Deploy pipeline and targets for both dev-cluster and prod-cluster.
 8. Push the updated code to the GitHub repository, triggering the Cloud Build and Cloud Deploy processes.
+9. Once pipeline deployed successfully, Access the spring boot application by accessing Endpoints IP and port (<IPAddress:port/welccome)
 
   
 
