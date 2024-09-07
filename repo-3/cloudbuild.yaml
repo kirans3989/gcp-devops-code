@@ -26,7 +26,8 @@ steps:
     - |
       gcloud deploy apply --file gcp-devops-code/repo-3/deploy/pipeline.yaml --region=us-central1
       gcloud deploy apply --file gcp-devops-code/repo-3/deploy/dev.yaml --region=us-central1
-      gcloud deploy releases create "app-release-$(git rev-parse --short HEAD)" --delivery-pipeline=gke-cicd-pipeline --region=us-central1 --from-k8s-manifest=repo-3/kubernetes/deploy.yaml
+      gcloud deploy apply --file gcp-devops-code/repo-3/deploy/prod.yaml --region=us-central1
+      gcloud deploy releases create "dev-release-$(git rev-parse --short HEAD)" --delivery-pipeline=gke-cicd-pipeline --region=us-central1 --from-k8s-manifest=repo-3/kubernetes/deploy.yaml
 
 options:
   logging: CLOUD_LOGGING_ONLY
