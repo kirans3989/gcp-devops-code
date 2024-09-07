@@ -39,7 +39,8 @@ We are going to implement the solution using the following steps to implement th
 8. Push the updated code to the GitHub repository, triggering the Cloud Build and Cloud Deploy processes.
 9. Once pipeline deployed successfully, Access the spring boot application by accessing Endpoints IP and port (<IPAddress:port/welccome)
 
-  ![GCP Delivery Pipeline](https://github.com/user-attachments/assets/9b93f53f-1d71-4e81-b563-1b6d4aa36a3e)
+ https://github.com/kirans3989/gcp-devops-code/blob/53d6a43b492f67906e02788c04ca66f09b11c958/repo-3/GCP%20Delivery%20Pipeline.jpg
+ 
 
 
 
